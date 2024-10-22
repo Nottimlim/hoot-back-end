@@ -1,7 +1,7 @@
 /* --------------------------------Imports--------------------------------*/
 
 import { Router } from 'express'
-import * as controllers from '../controllers/hoots.js'
+import * as controllers from '../controllers/auth.js'
 
 /* --------------------------------Express & Mongoose--------------------------------*/
 
@@ -9,16 +9,9 @@ const router = Router();
 
 /* --------------------------------Routes--------------------------------*/
 
-// TODO: Create route to sign-in
-// router.get('/', controllers.displayPets);
+router.post('/sign-up', controllers.signUp);
 
-// router.get('/:id', controllers.displayPet);
-
-// router.post('/', controllers.createPet);
-
-// router.delete('/:id', controllers.deletePet);
-
-// router.put('/:id', controllers.updatePet);
+router.post('/sign-in', controllers.signIn);
 
 /* --------------------------------Exports--------------------------------*/
 
