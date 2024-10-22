@@ -25,6 +25,8 @@ db.on('connected', () => {
     });
 });
 
+/* --------------------------------Middleware--------------------------------*/
+
 // middleware to parse json bodies
 app.use(cors());
 app.use(express.json());
