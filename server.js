@@ -6,9 +6,10 @@ import db from './db/connection.js'; // db = mongoose.connection
 import chalk from 'chalk';
 import cors from 'cors';
 
-import testJWTRouter from './controllers/test-jwt.js';
-import usersRouter from './controllers/users.js';
-import profileRouter from './controllers/profiles.js';
+import authRouter from './routes/route-auth.js';
+import hootsRouter from './routes/route-hoots.js';
+// import testJWTRouter from './controllers/test-jwt.js';
+// import profileRouter from './controllers/profiles.js';
 
 /* --------------------------------Express & Mongoose--------------------------------*/
 
@@ -28,10 +29,9 @@ db.on('connected', () => {
 // middleware to parse json bodies
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true })); // FIXME:
 
-// app.use(express.urlencoded({ extended: true }));
-
-app.use('/test-jwt', testJWTRouter);
-app.use('/users', usersRouter);
-
-app.use('/profiles', profileRouter);
+app.use('/auth', usersRouter);
+app.use('/hoots', hootsRouter);
+// app.use('/profiles', profileRouter);
+// app.use('/test-jwt', testJWTRouter);
