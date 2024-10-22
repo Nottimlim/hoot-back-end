@@ -6,8 +6,6 @@ import db from './db/connection.js'; // db = mongoose.connection
 import chalk from 'chalk';
 import cors from 'cors';
 
-import { verifyToken } from './middleware/verify-token.js';
-
 import testJWTRouter from './controllers/test-jwt.js';
 import usersRouter from './controllers/users.js';
 import profileRouter from './controllers/profiles.js';
