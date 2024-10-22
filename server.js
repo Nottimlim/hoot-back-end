@@ -31,7 +31,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // FIXME:
 
-app.use('/auth', usersRouter);
+app.use('/auth', authRouter);
 app.use('/hoots', hootsRouter);
 // app.use('/profiles', profileRouter);
 // app.use('/test-jwt', testJWTRouter);
