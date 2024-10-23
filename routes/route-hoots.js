@@ -7,17 +7,19 @@ import * as controllers from '../controllers/hoots.js'
 
 const router = Router();
 
-/* --------------------------------Routes--------------------------------*/
+/* --------------------------------/hoot routes--------------------------------*/
 
-// router.get('/', controllers.displayPets);
+router.post('/', controllers.createHoots);
 
-// router.get('/:id', controllers.displayPet);
+router.get('/', controllers.getHoots);
 
-// router.post('/', controllers.createPet);
+router.get('/:hootId', controllers.getHoot);
 
-// router.delete('/:id', controllers.deletePet);
+router.put('/:hootId', controllers.updateHoot);
 
-// router.put('/:id', controllers.updatePet);
+router.delete('/:hootId', controllers.deleteHoot);
+
+router.post('/:hootId/comments', controllers.createComment);
 
 /* --------------------------------Exports--------------------------------*/
 
