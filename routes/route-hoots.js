@@ -2,8 +2,8 @@
 
 import { Router } from 'express'
 import { verifyToken } from '../middleware/verify-token.js';
-import { verifyAuthor } from '../middleware/verify-token.js';
-import * as controllers from '../controllers/hoots.js'
+import { verifyAuthor } from '../middleware/verify-author.js';
+import * as controllers from '../controllers/hoots.js';
 
 /* --------------------------------Express & Mongoose--------------------------------*/
 
@@ -16,9 +16,9 @@ router.get('/', controllers.getHoots);
 router.get('/:hootId', controllers.getHoot);
 
 // Signed In Routes
-router.use(verifyToken());
+router.use(verifyToken);
 
-router.post('/', verifyAuthor, controllers.createHoots);
+router.post('/', controllers.createHoot);
 
 router.put('/:hootId', verifyAuthor, controllers.updateHoot);
 
