@@ -32,4 +32,5 @@ app.use(express.urlencoded({ extended: true }));
 /* --------------------------------Routes--------------------------------*/
 
 app.use('/auth', authRouter);
+
 app.use('/hoots', hootsRouter);

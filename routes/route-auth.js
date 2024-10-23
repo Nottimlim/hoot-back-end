@@ -14,8 +14,8 @@ const router = Router();
 router.post('/sign-in', controllers.signIn);
 router.post('/sign-up', controllers.signUp);
 
-// authorization
-router.get('/verify/:userId', verifyToken, controllers.checkAuth)
+// authorization TODO:
+// router.get('/verify/:userId', verifyToken, controllers.checkAuth)
 
 /* --------------------------------Exports--------------------------------*/
 
