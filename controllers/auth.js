@@ -91,4 +91,4 @@ const signIn = async (req, res) => {
 
 /* --------------------------------Exports--------------------------------*/
 
-export { signUp, signIn, checkAuth }
+export { SALT, signUp, signIn, checkAuth }

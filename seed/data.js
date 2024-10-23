@@ -1,27 +1,35 @@
-// TODO:
+import dotenv from 'dotenv';
+dotenv.config();
 import db from "../db/connection.js";
-import Pet from "../models/model-pet.js";
+import User from "../models/model-user.js";
+import bcrypt from 'bcrypt';
+import { SALT } from '../controllers/auth.js';
 
 const insertData = async () => {
 
-    await db.dropDatabase();
+    // await db.dropDatabase();
 
-    const pets = [
+    const users = [
         {
-            name: "Lucky",
-            age: 11,
-            breed: "Iguana"
+            username: "Lucky",
+            password: "13"
         },
         {
-            name: "Pata",
-            age: 14,
-            breed: "Doggy"
+            username: "Wonderwoman",
+            password: "13"
         },
     ]
+    
+    for (let i = 0; i < users.length; i++) {
 
-    await Pet.create(pets);
+        await User.create({
+            username: users[i].username,
+            hashedPassword: bcrypt.hashSync(users[i].password, SALT)
+        })
 
-    console.log('Pets have entered the database');
+    }
+
+    console.log('Users have entered the database');
 
     await db.close();
 

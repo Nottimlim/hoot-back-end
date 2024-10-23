@@ -11,6 +11,10 @@ import mongoose from 'mongoose';
 
 mongoose.set("returnOriginal", false);
 
+if (!process.env.MONGODB_URI) {
+    console.log('MongoDB URI is undefined!')
+}
+
 mongoose.connect(process.env.MONGODB_URI);
 
 mongoose.connection.on('disconnected', () => {
