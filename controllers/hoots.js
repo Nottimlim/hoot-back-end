@@ -1,6 +1,6 @@
 /* --------------------------------Imports--------------------------------*/
 
-// import Hoot from '../models/model-pet.js';
+import Hoot from '../models/model-hoot.js';
 
 
 
@@ -10,8 +10,12 @@
 /* --------------------------------POST Controllers--------------------------------*/
 
 
+/* --------------------------------PUT Controllers--------------------------------*/
+
+
+/* --------------------------------DELETE Controllers--------------------------------*/
 
 
 /* --------------------------------Exports--------------------------------*/
 
-// export { displayPets, displayPet, createPet, deletePet, updatePet }
+export {  }
