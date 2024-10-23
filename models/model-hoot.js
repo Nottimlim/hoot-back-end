@@ -1,25 +1,30 @@
-// TODO:
 import mongoose from 'mongoose';
+
 const hootSchema = new mongoose.Schema(
 
     {
- title: {
-    type: String,
-    required: true,
- },
- text: {
-    type: String,
-    required: true,
- },
-category: {
-    type: String,
-    required: true,
-    enum: ['News', 'Sports', 'Games', 'Movies', 'Music', 'Television'],
+        title: {
+            type: String,
+            required: true,
+        },
+        text: {
+            type: String,
+            required: true,
+        },
+        category: {
+            type: String,
+            required: true,
+            enum: ['News', 'Sports', 'Games', 'Movies', 'Music', 'Television'],
+        },
+        author: { 
+            type: mongoose.Schema.Types.ObjectId, 
+            ref: 'User' 
+        },
+        comments: [commentSchema]
     },
-    author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    comments: [commentSchema]
-},
-{ timestamps: true }
+
+    { timestamps: true }
+    
 )
 
 const commentSchema = new mongoose.Schema(
@@ -28,11 +33,15 @@ const commentSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+        author: { 
+            type: mongoose.Schema.Types.ObjectId, 
+            ref: 'User' 
+        }
     },
-    { timestemps: true }
+
+    { timestamps: true }
+
 );
 
 const Hoot = mongoose.model('Hoot', hootSchema);
-module.exports = Hoot;
-
+export default Hoot;
