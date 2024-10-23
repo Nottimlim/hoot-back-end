@@ -8,7 +8,7 @@ import * as controllers from '../controllers/auth.js';
 
 const router = Router();
 
-/* --------------------------------Routes--------------------------------*/
+/* --------------------------------/auth routes--------------------------------*/
 
 // authentication
 router.post('/sign-in', controllers.signIn);
