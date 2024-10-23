@@ -8,8 +8,6 @@ import cors from 'cors';
 
 import authRouter from './routes/route-auth.js';
 import hootsRouter from './routes/route-hoots.js';
-// import testJWTRouter from './controllers/test-jwt.js';
-// import profileRouter from './controllers/profiles.js';
 
 /* --------------------------------Express & Mongoose--------------------------------*/
 
@@ -29,9 +27,9 @@ db.on('connected', () => {
 // middleware to parse json bodies
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true })); // FIXME:
+app.use(express.urlencoded({ extended: true }));
+
+/* --------------------------------Routes--------------------------------*/
 
 app.use('/auth', authRouter);
 app.use('/hoots', hootsRouter);
-// app.use('/profiles', profileRouter);
-// app.use('/test-jwt', testJWTRouter);
