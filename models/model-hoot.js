@@ -1,18 +1,38 @@
 // TODO:
 import mongoose from 'mongoose';
+const hootSchema = new mongoose.Schema(
 
-export default mongoose.model('User', new mongoose.Schema({
-    username: {
-        type: String,
-        required: true,
-        unique: true,
+    {
+ title: {
+    type: String,
+    required: true,
+ },
+ text: {
+    type: String,
+    required: true,
+ },
+category: {
+    type: String,
+    required: true,
+    enum: ['News', 'Sports', 'Games', 'Movies', 'Music', 'Television'],
     },
-    hashedPassword: {
-        type: String,
-        required: true,
-    }
-}).set('toJSON', {
-    transform: (document, returned) => {
-        delete returned.hashedPassword;
-    }
-}))
+    author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    comments: [commentSchema]
+},
+{ timestamps: true }
+)
+
+const commentSchema = new mongoose.Schema(
+    {
+        text: {
+            type: String,
+            required: true
+        },
+        author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+    },
+    { timestemps: true }
+);
+
+const Hoot = mongoose.model('Hoot', hootSchema);
+module.exports = Hoot;
+
