@@ -7,7 +7,7 @@ const verifyAuthor = async (req, res, next) => {
 
         const hoot = await Hoot.findById(req.params.hootId);
 
-        if (req.user._id !== hoot.author) {
+        if (JSON.stringify(req.user._id) !== JSON.stringify(hoot.author)) {
             return res.status(401).json({ error: "Unauthorized!"});
         }
 

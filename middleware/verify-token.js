@@ -12,7 +12,7 @@ const verifyToken = (req, res, next) => {
 
     } catch (err) {
 
-        res.status(401).json({ err: "We have an issue" });
+        res.status(401).json({ err: "User is not authenticated" });
 
     }
 
