@@ -9,7 +9,7 @@ const getHoots = async (req, res) => {
         const hoots = await Hoot.find({})
         .populate('author')
         .sort({ createdAt: 'desc' });
-        res.status(200).json({ hoots }); // Added curly braces around hoots
+        res.status(200).json(hoots);
     } catch (error) {
         res.status(500).json(error);
     }
@@ -20,7 +20,7 @@ const getHoot = async (req, res) => {
 
     try {
         const hoot = await Hoot.findById(req.params.hootId).populate('author');
-        res.status(200).json({ hoot }); // Added curly braces around hoot
+        res.status(200).json(hoot); 
     } catch (error) {
         res.status(500).json(error);
     }
@@ -36,7 +36,7 @@ const createHoot = async (req, res) => {
         req.body.author = req.user._id;
         const hoot = await Hoot.create(req.body);
         hoot._doc.author = req.user;
-        res.status(201).json({ hoot }); // Added curly braces around hoot
+        res.status(201).json(hoot);
     } catch (error) {
         console.log(error);
         res.status(500).json(error)
@@ -62,7 +62,7 @@ const createComment = async (req, res) => {
         await hoot.save();
 
         // return
-        res.status(201).json({ hoot });
+        res.status(201).json(hoot);
 
     } catch(error) {
 
@@ -79,7 +79,7 @@ const updateHoot = async (req, res) => {
     try {
 
         const hoot = await Hoot.findByIdAndUpdate(req.params.hootId, req.body);
-        res.status(201).json({ hoot });
+        res.status(201).json(hoot);
 
     } catch(err) {
 
@@ -96,8 +96,7 @@ const deleteHoot = async (req, res) => {
     try {
 
         const hoot = await Hoot.findByIdAndDelete(req.params.hootId);
-        const hoots = await Hoot.find();
-        res.status(201).json({ "deleted": hoot, hoots });
+        res.status(201).json(hoot);
 
     } catch(err) {
 
